@@ -3,10 +3,10 @@ Hello! This is my repo for hw5:)
 
 You might want to check:
 
-* [Rmd](https://github.com/STAT545-UBC-students/hw04-yukirang/blob/master/hw05-gapminder.Rmd)
+* [Rmd](https://github.com/STAT545-UBC-students/hw05-yukirang/blob/master/hw05-gapminder.Rmd)
 
-* [md](https://github.com/STAT545-UBC-students/hw04-yukirang/blob/master/hw05-gapminder.md)
+* [md](https://github.com/STAT545-UBC-students/hw05-yukirang/blob/master/hw05-gapminder.md)
 
-* [html](https://github.com/STAT545-UBC-students/hw04-yukirang/blob/master/hw05-gapminder.html)
+* [html](https://github.com/STAT545-UBC-students/hw05-yukirang/blob/master/hw05-gapminder.html)
 
 Good day!
