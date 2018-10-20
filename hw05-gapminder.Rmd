@@ -18,10 +18,12 @@ str(gapminder)
 # see what's going on inside by just showing the head rows:
 knitr::kable(head(gapminder,15))
 ```
+
 And check the continent levels in gapminder:
 ```{r}
 levels(gapminder$continent)
 ```
+
 Now let's drop 'Oceania', and see what will happen:
 ```{r}
 gap_drop <- gapminder %>% 
@@ -32,6 +34,7 @@ gap_drop <- gapminder %>%
 str(gap_drop)
 levels(gap_drop$continent)
 ```
+
 It seems 24 rows have been removed (from 1704 to 1680). But the number of continent levels is still 5. And the "Oceania" level itself still exists. To verify that "Oceania" related rows were indeed dropped, let's count the "Ociania" rows in gapminder and gap_drop:
 ```{r}
 gapminder %>% 
@@ -41,6 +44,7 @@ gap_drop %>%
   filter(continent == "Oceania") %>% 
   count()
 ```
+
 To get rid of the unused "Oceania" level:
 ```{r}
 drop1 <- gap_drop %>% 
@@ -56,6 +60,7 @@ drop2 <- gap_drop$continent %>%
 str(drop2)
 levels(drop2)
 ```
+
 Now we do have 4 continent levels.
 
 ### 2.Reorder the levels of country or continent.
@@ -67,6 +72,7 @@ gap_sub <- gapminder %>%
   droplevels()
 knitr::kable(gap_sub)
 ```
+
 Order according to mean of lifeExp:
 ```{r}
 gap_sub %>% 
@@ -81,8 +87,6 @@ ggplot(gap_sub, aes(x = lifeExp, y = country, colour=country)) +
   geom_point()
 ggplot(gap_sub, aes(x = lifeExp, y = fct_reorder(country, lifeExp, mean),colour=country)) + 
   geom_point()
-# ggplot(gap_sub, aes(x = lifeExp, y = order_back,colour=continent)) + 
-#   geom_point()
 ```
 
 We can notice that the order of the y-axis has changed. While the table was still shown in original order.
@@ -109,6 +113,7 @@ gap_sub %>%
   ggplot(aes(x = lifeExp, y = fct_reorder(country, lifeExp, mean), colour=country)) +
   geom_point()
 ```
+
 Both are reordered.
 
 ## Part 2: File I/O
@@ -127,6 +132,7 @@ write_csv(gap_write, "gap_write.csv")
 gap_read_csv <- read_csv("gap_write.csv")
 knitr::kable(gap_read_csv)
 ```
+
 When reading a dataframe, write_csv() parses column with types. After read_csv(), the data keeps the same as before.
 
 ### saveRDS()/readRDS()
@@ -135,6 +141,7 @@ saveRDS(gap_write, "gap_save.rds")
 gap_read_rds <- readRDS("gap_save.rds")
 knitr::kable(gap_read_rds)
 ```
+
 The data  survives the round trip.
 ### dput()/dget()
 ```{r}
@@ -142,6 +149,7 @@ dput(gap_write, "gap_put.txt")
 gap_get_txt <- dget("gap_put.txt")
 knitr::kable(gap_get_txt)
 ```
+
 Also a great trip with data survived.
 
 ## Part 3: Visualization design
@@ -164,11 +172,13 @@ Let's make a plot with ggplot() first:
           strip.background = element_rect(fill = "lightblue"),
     )
 ```
+
 Now convert it to a `plotly` object:
 ```{r}
 library(plotly)
 ggplotly(plot)
 ```
+
 Now we can select and zoom the plot, with exact data when hovering. We can also autoscale it to make the plot more focused. It is also possible to move each graph up and down, right and left.
 Or view it in 3-d format:
 ```{r}
